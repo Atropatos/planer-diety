@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../services/auth';
+import { AuthService } from '../../services/AuthService';
 import './LoginComponent.css'
 
 const LoginComponent = () => {
-  const auth = useAuth();
+  const auth = AuthService();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +19,7 @@ const LoginComponent = () => {
 
   return (
     <div className="form">
-      <h1>Login</h1>
+      <h1>Zaloguj się</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

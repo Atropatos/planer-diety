@@ -1,7 +1,7 @@
-import { Ingredient } from "../models/ingredient";
-import { nutritionType } from "../enums/nutritionType.enum";
+import { Ingredient } from "../models/ingredient.ts";
+import { nutritionType } from "../enums/nutritionType.enum.ts";
 
-export const INGREDIENTS:Ingredient[] = [
+export const INGREDIENTS= [
   {
     name: "Jajko",
     nutritionals: [

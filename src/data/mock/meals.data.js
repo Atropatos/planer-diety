@@ -1,17 +1,17 @@
 // meals.data.ts
-import { Ingredient } from '../models/ingredient';
-import { Meal, } from '../models/meal';
-import { Nutrition } from '../models/nutrition';
-import { nutritionType } from '../enums/nutritionType.enum';
+import { Ingredient } from '../models/ingredient.ts';
+import { Meal, } from '../models/meal.ts';
+import { Nutrition } from '../models/nutrition.ts';
+import { nutritionType } from '../enums/nutritionType.enum.ts';
 import {INGREDIENTS} from './ingredient.data';
-import { MealType } from '../enums/mealType.enum';
+import { MealType } from '../enums/mealType.enum.ts';
 
 
 
 
 
 
-export const MEALS:Meal[] = [
+export const MEALS = [
   {
     ingredients: [INGREDIENTS[0],INGREDIENTS[1],INGREDIENTS[2]],
     name: "kanapka z maslem i jajkami",
@@ -48,8 +48,8 @@ export const MEALS:Meal[] = [
 
 
 
-function calculateTotalNutrition(ingredients: Ingredient[]): Nutrition[] {
-  let totalNutrition: Nutrition[] = [];
+function calculateTotalNutrition(ingredients) {
+  let totalNutrition= [];
 
   ingredients.forEach(ingredient => {
     ingredient.nutritionals.forEach(nutritional => {

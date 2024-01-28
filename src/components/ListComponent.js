@@ -1,11 +1,22 @@
 import React from "react";
-
-function ListComponent()  {
-    return  <ul>
-            <li><span> First element of the list</span></li>
-                <li><span> Second element of the list</span></li>
-                <li><span> Third element of the list</span></li>
+import { IngredientService, useIngredientDetails } from "../services/IngredientService";
+import { AuthService } from '../services/AuthService';
+import { INGREDIENTS } from "../data/mock/ingredient.data.js";
+const ListComponent = () => {
+    return (
+      <div>
+        {INGREDIENTS.map((ingredient, index) => (
+          <div key={index}>
+            <h2>{ingredient.name}</h2>
+            <ul>
+              {ingredient.nutritionals.map((nutritional, i) => (
+                <li key={i}>{nutritional.type}: {nutritional.value}</li>
+              ))}
             </ul>
-           
-    }
-    export default ListComponent;
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  export default ListComponent;

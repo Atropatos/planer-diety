@@ -16,6 +16,9 @@ function FormComponent() {
     activityLevel: '',
   });
 
+  const [formErrors, setFormErrors] = useState({});
+
+
   const passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,30}$/;
 
   const handleInputChange = (event) => {
@@ -50,6 +53,13 @@ function FormComponent() {
     } else {
       console.log('Formularz jest błędny');
     }
+
+    // let errors = { ...formErrors };
+    // if (formValues.username === 'username' && !isValidUsername(value)) {
+    //     errors.username = 'Nazwa użytkownika musi zawierać ';
+    // } else {
+    //     errors.username = '';
+    // }
   };
 
   const isValidForm = () => {
@@ -71,14 +81,10 @@ function FormComponent() {
     // Validation logic for age field
     const isAgeValid = /^[0-9]*$/.test(formValues.age) && formValues.age >= 12 && formValues.age <= 130;
   
-    // Validation logic for goal field
-    const isGoalValid = !!formValues.goal; // Assuming it should not be empty
-  
-    // Validation logic for gender field
-    const isGenderValid = !!formValues.gender; // Assuming it should not be empty
-  
-    // Validation logic for activityLevel field
-    const isActivityLevelValid = !!formValues.activityLevel; // Assuming it should not be empty
+    const isGoalValid = formValues.goal !== "";
+    const isGenderValid = formValues.gender !== "";
+    const isActivityLevelValid = formValues.activityLevel !== "";
+
   
     // Return true if all fields are valid, otherwise false
     return (
@@ -196,6 +202,7 @@ function FormComponent() {
             onChange={handleInputChange}
             required
           >
+            <option value="">Wybierz cel</option>
             <option value="schudnac">schudnac</option>
             <option value="utrzymac">utrzymac wage</option>
             <option value="przytyc">przytyc</option>
@@ -210,6 +217,7 @@ function FormComponent() {
             onChange={handleInputChange}
             required
           >
+            <option value="">Wybierz płeć</option>
             <option value="mezczyzna">mezczyzna</option>
             <option value="kobieta">kobieta</option>
           </select>
@@ -223,6 +231,7 @@ function FormComponent() {
             onChange={handleInputChange}
             required
           >
+            <option value="">Wybierz poziom aktywności</option>
             <option value="niski">niski poziom aktywności</option>
           <option value="lekki">lekki poziom aktywności - 1-3 treningi/tydzień</option>
           <option value="umiarkowany">umiarkowany poziom aktywności - 3-5 treningów/tydzień</option>
